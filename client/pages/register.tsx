@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import InputGroup from '../src/components/InputGroup';
 
 const register = () => {
   return (
@@ -8,6 +9,7 @@ const register = () => {
         <div className="w-10/12 mx-auto md:w-96">
           <h1 className="mb-2 text-xl font-medium">회원가입</h1>
           <form>
+            {/* <InputGroup /> */}
             <button className="w-full py-2 text-xs font-bold text-white uppercase bg-gray-400 border border-gray-400 rounded">
               sign up
             </button>
