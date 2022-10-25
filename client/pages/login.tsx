@@ -11,20 +11,23 @@ const Register = () => {
 
   const router = useRouter();
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('/auth/register', {
-        password,
-        username,
-      });
-
+      const res = await axios.post(
+        '/auth/login',
+        {
+          username,
+          password,
+        },
+        {withCredentials: true}
+      );
       console.log(res);
       router.push('/login');
     } catch (error: any) {
       console.log(error);
-      setErrors(error?.response?.data || {})
+      setErrors(error?.response?.data || {});
     }
   };
 
@@ -33,7 +36,7 @@ const Register = () => {
       <div className="flex flex-col items-center justify-content h-screen p-6">
         <div className="w-10/12 mx-auto md:w-96">
           <h1 className="mb-2 text-xl font-medium">로그인</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleLogin}>
             <InputGroup placeholder="Username" value={username} setValue={setUsername} error={errors.username} />
             <InputGroup placeholder="Password" type="password" value={password} setValue={setPassword} error={errors.password} />
             <button type="submit" className="w-full py-2 text-xs font-bold text-white uppercase bg-gray-400 border border-gray-400 rounded">
